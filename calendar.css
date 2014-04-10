@@ -27,6 +27,12 @@
     position: relative;
     height: 56px;
     width: 100%;
+    -webkit-border-top-left-radius: 3px;
+       -moz-border-top-left-radius: 3px;
+            border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+       -moz-border-top-right-radius: 3px;
+            border-top-right-radius: 3px;
     background: #ffffff;
     background: -moz-linear-gradient(top,  #ffffff 0%, #dde1e7 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dde1e7));
@@ -35,6 +41,15 @@
     background: -ms-linear-gradient(top,  #ffffff 0%,#dde1e7 100%);
     background: linear-gradient(to bottom,  #ffffff 0%,#dde1e7 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dde1e7',GradientType=0 );
+}
+
+.calendar__body {
+    -webkit-border-bottom-left-radius: 3px;
+       -moz-border-bottom-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+       -moz-border-bottom-right-radius: 3px;
+            border-bottom-right-radius: 3px;
 }
 
 .calendar__head-month {
@@ -177,8 +192,7 @@
     z-index: 1;
     box-sizing: border-box;
     position: absolute;
-    width: 280px;
-    margin: 5px;
+    margin: 0 5px;
     padding: 10px;
     border: 1px solid #CFCFCF;
     -webkit-border-radius: 5px;
@@ -190,7 +204,7 @@
 .calendar__editor-input {
     box-sizing: border-box;
     resize: none;
-    width: 100%;
+    width: 260px;
     height: 100px;
     padding: 5px;
     border: 1px solid #E4E4E4;

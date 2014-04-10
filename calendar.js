@@ -221,6 +221,13 @@
             }
         },
 
+        /**
+         * Destroyes calendar
+         */
+        destroy: function() {
+            $('body').off(this._onBodyClick);
+        },
+
         /* ---------- Protected methods ------------ */
 
         /**
@@ -447,6 +454,16 @@
                 this._onPrevMonthButtonClick);
             this.el.on('click', '.calendar__day-content', {self: this}, 
                 this._onDayContentClick);
+            $('body').on('click', {self: this}, this._onBodyClick);
+        },
+
+        /**
+         * Process click on body
+         * @param {JQueryEvent} event
+         */
+        _onBodyClick: function(event) {
+            if (!$(event.target).parents('.calendar__day').length)
+                event.data.self._hideEditor();
         },
 
         /**
@@ -604,6 +621,8 @@
 
             el.append(html);
 
+            this._updatePosition();
+
             el.animate({scrollTop: el.get(0).scrollHeight});
 
             if (this.options.callbacks.add)
@@ -618,6 +637,7 @@
             for (var i = 0; i < this.events.length; i++) {
                 if (this.events[i].id === event.id) {
                     this._getElementByEvent(event).remove();
+                    this._updatePosition();
                     this.events.splice(i, 1);
                     if (this.options.callbacks.remove)
                         this.options.callbacks.remove(event);
@@ -647,8 +667,14 @@
                 }));
         },
 
+        /**
+         * Updates editor position
+         */
         _updatePosition: function() {
-
+            this.el.css({
+                left: this.owner.width(),
+                top: Math.round((this.owner.outerHeight() - this.el.outerHeight()) / 2)
+            });
         },
 
         /**
