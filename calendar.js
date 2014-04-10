@@ -368,7 +368,10 @@
          * @returns {JQueryElement}
          */
         _getDayElementByDate: function(date) {
-            return $('#calendar__day-' + date.getTime());
+            if (typeof date === 'string')
+                return $('#calendar__day-' + new Date(date).getTime());
+            else
+                return $('#calendar__day-' + date.getTime());
         },
 
         /**
@@ -473,8 +476,6 @@
                 el = $(event.target).parents('.calendar__day'),
                 date = self._getDateByDateElement(el);
 
-            console.log(date);
-
             if (!el.hasClass('outbound'))
                 self._showEditor(date, el);
             else
@@ -501,7 +502,6 @@
          * Processes editor removing event
          */
         _onEditorRemoveEvent: function(event) {
-            console.log(event.date);
             var el = this._getDayElementByDate(event.date),
                 counterHtml = this._getEventCounterHtml(event.date);
 
@@ -528,6 +528,7 @@
 
         /* Options data */
         this.options = options;
+
 
         /* Array with events */
         this.events = options.events || [];
@@ -708,7 +709,6 @@
          * @returns {CalendarEvent}
          */
         _findEventById: function(id) {
-            console.log(this.events, id);
             for (var i = 0; i < this.events.length; i++) {
                 if (this.events[i].id === id)
                     return this.events[i];
