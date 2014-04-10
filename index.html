@@ -1,11 +1,31 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Datepicker</title>
-		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-	</head>
-	<body>
-
-	</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Calendar</title>
+        <link type="text/css" rel="stylesheet" href="main.css"/>
+        <link type="text/css" rel="stylesheet" href="calendar.css"/>
+        <script src="lib/jquery-2.1.0.min.js"></script>
+        <script src="calendar.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="calendar">
+                <div class="calendar__head">
+                    <div class="calendar__head-month-prev"></div>
+                    <div class="calendar__head-month-next"></div>
+                    <div class="calendar__head-month"></div>
+                </div>
+                <div class="calendar__body">
+                    <div class="calendar__week-header"></div>
+                    <div class="calendar__month"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(function() {
+            $('.calendar').calendar();
+        });
+    </script>
 </html>
